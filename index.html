@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masaki Sato Works</title>
+<style>
+:root{--bg:#0f1016;--card:#181a24;--line:#2a2d3c;--text:#eceef5;--sub:#9aa0b4;--accent:#ff7a59;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI",sans-serif;line-height:1.7}
+a{color:inherit}
+header{position:sticky;top:0;z-index:10;background:rgba(15,16,22,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:0 auto;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.nav b{letter-spacing:.08em}
+.nav nav a{margin-left:20px;font-size:14px;color:var(--sub);text-decoration:none}
+.nav nav a:hover{color:var(--text)}
+.hero{max-width:1120px;margin:0 auto;padding:96px 16px 64px}
+.hero small{color:var(--accent);font-weight:700;letter-spacing:.2em}
+.hero h1{font-size:clamp(32px,6vw,60px);line-height:1.25;margin:12px 0 20px}
+.hero p{color:var(--sub);max-width:640px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tags span{border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;color:var(--sub)}
+section{max-width:1120px;margin:0 auto;padding:48px 16px}
+h2{font-size:28px;margin-bottom:8px}
+.lead{color:var(--sub);margin-bottom:24px;font-size:14px}
+.filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filter button{background:var(--card);border:1px solid var(--line);color:var(--sub);border-radius:999px;padding:6px 16px;cursor:pointer;font:inherit;font-size:14px}
+.filter button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.work{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:zoom-in;transition:transform .2s}
+.work:hover{transform:translateY(-4px)}
+.work .pic{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:#000}
+.work .pic img{width:100%;height:100%;object-fit:cover}
+.work.logo .pic{background:#f4f4f6}
+.work.logo .pic img{object-fit:contain;padding:18px}
+.work .meta{padding:14px 16px}
+.work .meta em{font-style:normal;font-size:12px;color:var(--accent);font-weight:700}
+.work .meta h3{font-size:16px;margin-top:2px}
+.work .meta p{font-size:13px;color:var(--sub)}
+.video{background:var(--card);border:1px dashed var(--line);border-radius:14px;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:14px;text-align:center;padding:16px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+.contact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px;text-align:center}
+.contact a.btn{display:inline-block;margin-top:16px;background:var(--accent);color:#fff;text-decoration:none;padding:10px 28px;border-radius:999px;font-weight:700}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:40px 16px}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:16px}
+#lb img{max-width:100%;max-height:100%}
+@media (max-width:600px){.nav nav a{margin-left:12px}.grid{grid-template-columns:1fr}.hero{padding:64px 16px 40px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><b>MASAKI SATO</b><nav><a href="#works">Works</a><a href="#clips">切り抜き</a><a href="#contact">Contact</a></nav></div></header>
+
+<div class="hero">
+  <small>STREAMER CREATIVE</small>
+  <h1>配信者の「らしさ」を、<br>サムネ・ロゴ・切り抜きに。</h1>
+  <p>（仮）VTuber・配信者さま向けに、ロゴ制作・サムネイル・ヘッダー・切り抜き動画の編集をしています。ここの文言はあとで差し替え。</p>
+  <div class="tags"><span>ロゴ</span><span>サムネイル</span><span>ヘッダー</span><span>切り抜き動画</span><span>テロップ</span></div>
+</div>
+
+<section id="works">
+  <h2>Works</h2>
+  <p class="lead">クリックで拡大</p>
+  <div class="filter">
+    <button class="on" data-f="all">すべて</button>
+    <button data-f="thumb">サムネイル</button>
+    <button data-f="logo">ロゴ</button>
+    <button data-f="header">ヘッダー</button>
+  </div>
+  <div class="grid">
+    <div class="work" data-c="thumb"><div class="pic"><img src="img/thumb_kagitsuki.jpg" alt=""></div><div class="meta"><em>サムネイル</em><h3>鉤月空さま｜隔離病院</h3><p>ホラーゲーム実況（説明文は仮）</p></div></div>
+    <div class="work" data-c="thumb"><div class="pic"><img src="img/thumb_tsukimi.jpg" alt=""></div><div class="meta"><em>サムネイル</em><h3>レキさま｜雑談配信（お月見）</h3><p>季節テーマの雑談枠（説明文は仮）</p></div></div>
+    <div class="work" data-c="thumb"><div class="pic"><img src="img/thumb_halloween.jpg" alt=""></div><div class="meta"><em>サムネイル</em><h3>雑談配信｜ハロウィン</h3><p>季節テーマの雑談枠（説明文は仮）</p></div></div>
+    <div class="work logo" data-c="logo"><div class="pic"><img src="img/logo_sushizawa.png" alt=""></div><div class="meta"><em>ロゴ</em><h3>すしざわさま</h3><p>チャンネルロゴ（説明文は仮）</p></div></div>
+    <div class="work logo" data-c="logo"><div class="pic"><img src="img/logo_seishou.png" alt=""></div><div class="meta"><em>ロゴ</em><h3>青星ダイヤさま</h3><p>チャンネルロゴ（説明文は仮）</p></div></div>
+    <div class="work" data-c="header"><div class="pic"><img src="img/header_hanaemi.jpg" alt=""></div><div class="meta"><em>ヘッダー</em><h3>はなえみさま</h3><p>Xヘッダー（説明文は仮）</p></div></div>
+  </div>
+</section>
+
+<section id="clips">
+  <h2>切り抜き動画</h2>
+  <p class="lead">YouTube Shorts／TikTok の埋め込みをここに並べる予定</p>
+  <div class="vgrid">
+    <div class="video">切り抜き 1<br>（YouTubeのURLを入れると埋め込み）</div>
+    <div class="video">切り抜き 2</div>
+    <div class="video">切り抜き 3</div>
+    <div class="video">切り抜き 4</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2>ご依頼・ご相談</h2>
+    <p class="lead">（仮）料金・納期・連絡先はあとで入れる</p>
+    <a class="btn" href="#">X でDMする（仮）</a>
+  </div>
+</section>
+
+<footer>© Masaki Sato｜掲載作品の権利は各配信者さまに帰属します</footer>
+<div id="lb"><img alt=""></div>
+
+<script>
+document.querySelectorAll('.filter button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.filter button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  document.querySelectorAll('.work').forEach(w=>w.style.display=(f==='all'||w.dataset.c===f)?'':'none');
+});
+const lb=document.getElementById('lb');
+document.querySelectorAll('.work').forEach(w=>w.onclick=()=>{lb.querySelector('img').src=w.querySelector('img').src;lb.style.display='flex'});
+lb.onclick=()=>lb.style.display='none';
+</script>
+</body>
+</html>
