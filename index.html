@@ -3,109 +3,175 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>配信の切り抜き・サムネ制作｜全依頼無料</title>
+<title>配信の切り抜き編集｜ポートフォリオ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--card:#111114;--line:#2a2a30;--text:#f2efe8;--sub:#a9a59c;--gold:#e9d39a;}
+/* 下書き: 構成=temichann（ふわっと出る）／文字=雪兎ちゅう（源ノ角ゴシック=Noto Sans JP）／地=夢乃るゆた（上品なシルクの質感）
+   背景で動く物は仮（再生マーク・角丸の帯・十字）。くるくる・花などの女性VTuber寄りの飾りは使わない */
+:root{--ink:#3a3a48;--sub:#7d7b8c;--main:#6d6f92;--mint:#7fbfa8;--coral:#e9a0a8;--card:rgba(255,255,255,.72);--line:rgba(109,111,146,.22)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN",sans-serif;font-weight:500;line-height:1.9}
+html{scroll-behavior:smooth}
+body{color:var(--ink);font-family:"Noto Sans JP","Source Han Sans JP","源ノ角ゴシック JP",sans-serif;font-weight:500;line-height:1.8;background:#f6f4f8;overflow-x:hidden}
 a{color:inherit}
-.hero{min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 16px 56px}
-.hero img{width:min(860px,100%);height:auto}
-.hero .sub{margin-top:28px;font-weight:800;font-size:clamp(18px,3.2vw,28px);letter-spacing:.06em}
-.hero .note{margin-top:10px;font-weight:700;font-size:clamp(14px,2.2vw,17px);color:var(--sub)}
-.btn{display:inline-block;margin-top:32px;background:var(--gold);color:#000;text-decoration:none;padding:14px 40px;border-radius:999px;font-weight:800;font-size:17px;letter-spacing:.08em}
-.btn:hover{filter:brightness(1.08)}
-section{max-width:1120px;margin:0 auto;padding:64px 16px}
-.omoi{max-width:720px;text-align:center}
-.omoi h2{font-weight:800;font-size:clamp(24px,4.6vw,40px);line-height:1.5;margin-bottom:36px}
-.nb{display:inline-block}
-.omoi p{font-size:clamp(15px,2.4vw,18px);margin-bottom:1.4em}
-.omoi p.to{font-weight:800;font-size:clamp(14px,3.6vw,24px);white-space:nowrap;color:var(--gold);margin-bottom:12px}
-.omoi p.last{font-weight:800;font-size:clamp(17px,2.8vw,22px);color:var(--gold);margin-top:36px}
-h2.sec{text-align:center;font-weight:800;font-size:clamp(22px,3.6vw,30px);margin-bottom:6px}
-.lead{color:var(--sub);margin-bottom:24px;font-size:14px}
-section#clips .lead,section#works .lead{text-align:center}
-#clips .vgrid{max-width:820px;margin:0 auto}
-.filter{justify-content:center}
-.tmpl{display:inline-block;text-align:left;background:#000;border:1px solid var(--line);border-radius:10px;padding:16px 22px;margin-top:18px;font-size:14px;line-height:2}
+
+/* 地: シルクの質感（ゆっくり流れる淡い光沢＋ごく薄い粒） */
+.silk{position:fixed;inset:-20%;z-index:-3;
+  background:
+    radial-gradient(40% 30% at 20% 25%,rgba(214,206,232,.9),transparent 70%),
+    radial-gradient(35% 28% at 80% 20%,rgba(232,224,240,.95),transparent 70%),
+    radial-gradient(45% 35% at 70% 80%,rgba(208,214,232,.85),transparent 70%),
+    radial-gradient(40% 30% at 15% 85%,rgba(236,226,236,.9),transparent 70%),
+    linear-gradient(160deg,#f7f5fa,#eeebf3);
+  filter:blur(30px);animation:silk 28s ease-in-out infinite alternate}
+@keyframes silk{to{transform:translate(4%,-3%) rotate(3deg) scale(1.05)}}
+.sheen{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,0) 0 60px,rgba(255,255,255,.35) 90px,rgba(255,255,255,0) 130px);
+  background-size:200% 200%;animation:sheen 18s linear infinite;mix-blend-mode:soft-light}
+@keyframes sheen{to{background-position:200% 0}}
+.grain{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.18;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .44  0 0 0 0 .55  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* 背景でループして動く目を引く物（仮） */
+.floats{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.floats i{position:absolute;bottom:-80px;display:block;opacity:.55;animation:rise linear infinite}
+.floats .play{width:0;height:0;border-left:26px solid var(--main);border-top:16px solid transparent;border-bottom:16px solid transparent;filter:drop-shadow(0 2px 0 rgba(0,0,0,.04))}
+.floats .bar{width:64px;height:14px;border-radius:7px;background:var(--mint)}
+.floats .plus{width:22px;height:22px;background:linear-gradient(var(--coral),var(--coral)) center/22px 6px no-repeat,linear-gradient(var(--coral),var(--coral)) center/6px 22px no-repeat}
+@keyframes rise{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(200deg)}}
+
+/* ヘッダー（temichann型: 左にロゴ・右に字間の広い小さなメニュー） */
+header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 28px}
+header .logo{font-weight:900;color:var(--main);font-size:16px;letter-spacing:.06em;text-decoration:none}
+header nav{display:flex;gap:22px;align-items:center}
+header nav a{text-decoration:none;font-size:13px;letter-spacing:.2em;color:var(--sub);font-weight:700}
+header nav a.req{background:var(--main);color:#fff;padding:4px 14px;border-radius:999px;letter-spacing:.1em}
+
+/* 最初の画面 */
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:80px 20px 40px}
+.hero .in{display:flex;align-items:center;gap:48px;max-width:980px}
+.hero .copy .to{font-weight:700;color:var(--sub);font-size:clamp(13px,1.9vw,17px);white-space:nowrap;margin-bottom:14px}
+.hero h1{font-weight:900;font-size:clamp(34px,6.4vw,64px);line-height:1.35;letter-spacing:.02em}
+.hero h1 span{color:var(--main)}
+.hero .ask{margin-top:18px;font-weight:700;font-size:clamp(15px,2vw,19px);line-height:1.7}
+.hero .mark{flex:none;width:clamp(140px,22vw,230px);aspect-ratio:1;border-radius:36%;background:#fff;box-shadow:0 18px 40px rgba(109,111,146,.18);display:flex;align-items:center;justify-content:center}
+.hero .mark::before{content:"";border-left:clamp(48px,7.5vw,80px) solid var(--main);border-top:clamp(30px,4.6vw,50px) solid transparent;border-bottom:clamp(30px,4.6vw,50px) solid transparent;margin-left:12%}
+
+/* ふわっと出る */
+.fade{opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
+.fade.show{opacity:1;transform:none}
+.hero .fade{transition-delay:.25s}.hero .mark.fade{transition-delay:.6s}
+
+section{max-width:980px;margin:0 auto;padding:90px 20px}
+.ttl{text-align:center;margin-bottom:28px}
+.ttl b{display:block;font-weight:900;font-size:clamp(26px,4.4vw,40px);letter-spacing:.04em}
+.ttl small{display:block;color:var(--main);font-weight:700;letter-spacing:.3em;font-size:12px}
+.card{background:var(--card);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:22px;padding:28px}
+
+.clients{display:flex;flex-wrap:wrap;justify-content:center;gap:34px}
+.client{text-align:center;width:120px}
+.client img{width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 8px;border:3px solid #fff;box-shadow:0 6px 16px rgba(109,111,146,.18)}
+.client b{font-weight:700;font-size:14px}
+
+.tabs{display:flex;justify-content:center;gap:10px;margin-bottom:20px}
+.tabs button{font:inherit;font-weight:700;font-size:15px;padding:7px 22px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--sub);cursor:pointer}
+.tabs button.on{background:var(--main);border-color:var(--main);color:#fff}
+.pane{display:none}.pane.on{display:block}
 .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.clip .frame{aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.clip .frame{aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#000}
 .clip iframe{width:100%;height:100%;border:0;display:block}
-.clip h3{font-size:15px;font-weight:700;margin-top:10px;text-align:center}
-.filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.filter button{background:var(--card);border:1px solid var(--line);color:var(--sub);border-radius:999px;padding:6px 16px;cursor:pointer;font:inherit;font-size:14px}
-.filter button.on{background:var(--gold);border-color:var(--gold);color:#000;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
-.work{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:zoom-in;transition:transform .2s}
-.work:hover{transform:translateY(-4px)}
-.work .pic{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:#000}
-.work .pic img{width:100%;height:100%;object-fit:cover}
-.work.logo .pic{background:#f4f4f6}
-.work.logo .pic img{object-fit:contain;padding:18px}
-.work .meta{padding:14px 16px}
-.work .meta em{font-style:normal;font-size:12px;color:var(--gold);font-weight:700}
-.work .meta h3{font-size:16px;font-weight:700;margin-top:2px}
-.work .meta p{font-size:13px;color:var(--sub)}
-.contact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:40px 24px;text-align:center}
-.contact h2{font-weight:800;font-size:clamp(22px,3.6vw,30px)}
-footer{text-align:center;color:var(--sub);font-size:12px;padding:40px 16px}
-#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:16px}
+.clip b{display:block;text-align:center;font-weight:700;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.work{cursor:zoom-in}
+.work .pic{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
+.work .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.work.logo .pic{background:#fff}
+.work.logo .pic img{object-fit:contain;padding:14px}
+.work em{display:block;font-style:normal;font-size:12px;font-weight:700;color:var(--main);margin-top:8px}
+.work b{display:block;font-weight:700;font-size:14px;line-height:1.5}
+
+.info{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.info .card{text-align:center}
+.info h3{font-weight:900;font-size:20px;margin-bottom:4px}
+.info p{font-weight:700}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:30px 16px 40px}
+#lb{position:fixed;inset:0;background:rgba(30,28,40,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:16px}
 #lb img{max-width:100%;max-height:100%}
-@media (max-width:700px){.vgrid{grid-template-columns:1fr;max-width:340px;margin:0 auto}.grid{grid-template-columns:1fr}.hero{min-height:auto;padding:64px 16px 40px}}
+
+@media (max-width:700px){
+  header{padding:12px 16px}
+  header .logo{font-size:14px}
+  header nav{gap:12px}
+  header nav a{font-size:12px;letter-spacing:.1em}
+  .hero .in{flex-direction:column-reverse;gap:22px;text-align:center}
+  .vgrid{grid-template-columns:1fr;max-width:320px;margin:0 auto}
+  .grid,.info{grid-template-columns:1fr}
+  section{padding:64px 16px}
+  .client{width:92px}.client img{width:80px;height:80px}
+}
+@media (prefers-reduced-motion:reduce){.silk,.sheen,.floats i{animation:none}.fade{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
+<div class="silk"></div><div class="sheen"></div><div class="grain"></div>
+<div class="floats" id="floats"></div>
+
+<header>
+  <a class="logo" href="#">切り抜き編集</a>
+  <nav><a href="#works" data-tab="clips">実績</a><a href="#price">料金</a><a class="req" href="#request">ご依頼</a></nav>
+</header>
 
 <div class="hero">
-  <img src="img/hero_free.png" alt="2026年12月31日まで 全依頼無料" width="870" height="219">
+  <div class="in">
+    <div class="copy fade">
+      <p class="to">自分の配信が面白いか、不安に思っている方へ。</p>
+      <h1>「大丈夫です。」<br>「<span>絶対面白い</span>です。」</h1>
+      <p class="ask">一度私に切り抜き作らせてください。<br>めちゃめちゃ面白くします。</p>
+    </div>
+    <div class="mark fade" aria-hidden="true"></div>
+  </div>
 </div>
 
-<section class="omoi" style="padding-top:24px">
-  <p class="to">自分の配信が面白いか、不安に思っている方へ。</p>
-  <h2>大丈夫です。<br>絶対面白いです。</h2>
-  <p>配信が楽しくなくなったり、<br>伸びなくてやめてしまったり。<br><span class="nb">そういう配信者さんを、</span><span class="nb">今まで何人も見てきました。</span></p>
-  <p>見ていると面白いのに、<br>もったいないなと思うことがよくあります。</p>
-  <p>面白かった場面を切り抜いて渡したら、<br>ちょっと喜んでもらえるんじゃないかな。<br>そう思って、切り抜きを作っています。</p>
-</section>
-
-<section id="clips">
-  <h2 class="sec">切り抜き動画</h2>
-  <p class="lead">実際に担当した切り抜きショート</p>
-  <div class="vgrid">
-    <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/ONo8lRJivLs" title="かいねこさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><h3>かいねこさま</h3></div>
-    <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/y2xgmmf1srk" title="塾長さま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><h3>塾長さま</h3></div>
-    <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/_pti-YDqsaw" title="モかさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><h3>モかさま</h3></div>
+<section class="fade">
+  <div class="ttl"><small>CLIENTS</small><b>切り抜きを担当した配信者さん</b></div>
+  <div class="card">
+    <div class="clients">
+      <div class="client"><img src="img/avatar_kaineko.jpg" alt=""><b>かいねこさま</b></div>
+      <div class="client"><img src="img/avatar_jukucho.jpg" alt=""><b>塾長さま</b></div>
+      <div class="client"><img src="img/avatar_moka.jpg" alt=""><b>モかさま</b></div>
+    </div>
   </div>
 </section>
 
-<section id="works">
-  <h2 class="sec">サムネイル・ロゴ・ヘッダー</h2>
-  <p class="lead">クリックで拡大</p>
-  <div class="filter">
-    <button class="on" data-f="all">すべて</button>
-    <button data-f="thumb">サムネイル</button>
-    <button data-f="logo">ロゴ</button>
-    <button data-f="header">ヘッダー</button>
-  </div>
-  <div class="grid">
-    <div class="work" data-c="thumb"><div class="pic"><img src="img/thumb_kagitsuki.jpg" alt=""></div><div class="meta"><em>サムネイル</em><h3>鉤月空さま｜隔離病院</h3><p>ホラーゲーム実況</p></div></div>
-    <div class="work" data-c="thumb"><div class="pic"><img src="img/thumb_tsukimi.jpg" alt=""></div><div class="meta"><em>サムネイル</em><h3>レキさま｜雑談配信（お月見）</h3><p>季節テーマの雑談枠</p></div></div>
-    <div class="work" data-c="thumb"><div class="pic"><img src="img/thumb_halloween.jpg" alt=""></div><div class="meta"><em>サムネイル</em><h3>レキさま｜雑談配信（ハロウィン）</h3><p>季節テーマの雑談枠</p></div></div>
-    <div class="work logo" data-c="logo"><div class="pic"><img src="img/logo_sushizawa.png" alt=""></div><div class="meta"><em>ロゴ</em><h3>すしざわさま</h3><p>チャンネルロゴ</p></div></div>
-    <div class="work logo" data-c="logo"><div class="pic"><img src="img/logo_seishou.png" alt=""></div><div class="meta"><em>ロゴ</em><h3>青星ダイヤさま</h3><p>チャンネルロゴ</p></div></div>
-    <div class="work" data-c="header"><div class="pic"><img src="img/header_hanaemi.jpg" alt=""></div><div class="meta"><em>ヘッダー</em><h3>はなえみさま</h3><p>Xヘッダー</p></div></div>
+<section class="fade" id="works">
+  <div class="ttl"><small>WORKS</small><b>実績</b></div>
+  <div class="tabs"><button class="on" data-p="clips">切り抜き</button><button data-p="design">サムネ・ロゴ</button></div>
+  <div class="card">
+    <div class="pane on" id="clips">
+      <div class="vgrid">
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/ONo8lRJivLs" title="かいねこさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>かいねこさま</b></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/y2xgmmf1srk" title="塾長さま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>塾長さま</b></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/_pti-YDqsaw" title="モかさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>モかさま</b></div>
+      </div>
+    </div>
+    <div class="pane" id="design">
+      <div class="grid">
+        <div class="work"><div class="pic"><img src="img/thumb_kagitsuki.jpg" alt=""></div><em>サムネイル</em><b>鉤月空さま｜隔離病院</b></div>
+        <div class="work"><div class="pic"><img src="img/thumb_tsukimi.jpg" alt=""></div><em>サムネイル</em><b>レキさま｜雑談配信（お月見）</b></div>
+        <div class="work"><div class="pic"><img src="img/thumb_halloween.jpg" alt=""></div><em>サムネイル</em><b>レキさま｜雑談配信（ハロウィン）</b></div>
+        <div class="work logo"><div class="pic"><img src="img/logo_sushizawa.png" alt=""></div><em>ロゴ</em><b>すしざわさま</b></div>
+        <div class="work logo"><div class="pic"><img src="img/logo_seishou.png" alt=""></div><em>ロゴ</em><b>青星ダイヤさま</b></div>
+        <div class="work"><div class="pic"><img src="img/header_hanaemi.jpg" alt=""></div><em>ヘッダー</em><b>はなえみさま｜Xヘッダー</b></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="contact">
-    <h2>ご依頼・ご相談</h2>
-    <p class="lead">2026年12月31日まで、すべてのご依頼を無料でお受けします。<br>XのDMでお気軽にどうぞ。下の内容をコピーして送ってもらえると話が早いです。</p>
-    <div class="tmpl">・チャンネル名／URL<br>・ご依頼の内容（切り抜き・サムネ・ロゴ など）<br>・切り抜いてほしい配信のURL（あれば）<br>・希望の納期<br>・実績として載せてもいいか</div><br>
-    <a class="btn" href="#">X でDMする（仮）</a>
+<section class="fade">
+  <div class="info">
+    <div class="card" id="price"><h3>料金</h3><p>2026年12月31日まで無料</p></div>
+    <div class="card" id="request"><h3>ご依頼</h3><p>XのDMまで（仮）</p></div>
   </div>
 </section>
 
@@ -113,11 +179,25 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:40px 16px}
 <div id="lb"><img alt=""></div>
 
 <script>
-document.querySelectorAll('.filter button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.filter button').forEach(x=>x.classList.toggle('on',x===b));
-  const f=b.dataset.f;
-  document.querySelectorAll('.work').forEach(w=>w.style.display=(f==='all'||w.dataset.c===f)?'':'none');
-});
+// 背景で動く物を撒く（再生マーク・角丸の帯・十字）
+(function(){
+  const box=document.getElementById('floats'), kinds=['play','bar','plus'];
+  const n=window.innerWidth<700?10:18;
+  for(let i=0;i<n;i++){
+    const e=document.createElement('i'); e.className=kinds[i%3];
+    e.style.left=(Math.random()*100)+'%';
+    const d=18+Math.random()*16; e.style.animationDuration=d+'s'; e.style.animationDelay=(-Math.random()*d)+'s';
+    e.style.opacity=(.25+Math.random()*.35).toFixed(2);
+    box.appendChild(e);
+  }
+})();
+// ふわっと出る
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}}),{threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+// タブ・実績へ飛ぶ
+function showTab(p){document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.p===p));document.querySelectorAll('.pane').forEach(x=>x.classList.toggle('on',x.id===p))}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>showTab(b.dataset.p));
+document.querySelectorAll('[data-tab]').forEach(a=>a.addEventListener('click',()=>showTab(a.dataset.tab)));
 const lb=document.getElementById('lb');
 document.querySelectorAll('.work').forEach(w=>w.onclick=()=>{lb.querySelector('img').src=w.querySelector('img').src;lb.style.display='flex'});
 lb.onclick=()=>lb.style.display='none';
