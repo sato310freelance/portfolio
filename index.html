@@ -3,29 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Masaki Sato Works</title>
+<title>配信の切り抜き・サムネ制作｜全依頼無料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0f1016;--card:#181a24;--line:#2a2d3c;--text:#eceef5;--sub:#9aa0b4;--accent:#ff7a59;}
+:root{--bg:#000;--card:#111114;--line:#2a2a30;--text:#f2efe8;--sub:#a9a59c;--gold:#e9d39a;}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI",sans-serif;line-height:1.7}
+body{background:var(--bg);color:var(--text);font-family:"Noto Serif JP","Source Han Serif JP","源ノ明朝",serif;font-weight:500;line-height:1.9}
 a{color:inherit}
-header{position:sticky;top:0;z-index:10;background:rgba(15,16,22,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{max-width:1120px;margin:0 auto;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
-.nav b{letter-spacing:.08em}
-.nav nav a{margin-left:20px;font-size:14px;color:var(--sub);text-decoration:none}
-.nav nav a:hover{color:var(--text)}
-.hero{max-width:1120px;margin:0 auto;padding:96px 16px 64px}
-.hero small{color:var(--accent);font-weight:700;letter-spacing:.2em}
-.hero h1{font-size:clamp(32px,6vw,60px);line-height:1.25;margin:12px 0 20px}
-.hero p{color:var(--sub);max-width:640px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-.tags span{border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;color:var(--sub)}
-section{max-width:1120px;margin:0 auto;padding:48px 16px}
-h2{font-size:28px;margin-bottom:8px}
+.hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 16px 56px}
+.hero img{width:min(860px,100%);height:auto}
+.hero .sub{margin-top:28px;font-weight:900;font-size:clamp(18px,3.2vw,28px);letter-spacing:.06em}
+.hero .note{margin-top:10px;font-weight:700;font-size:clamp(14px,2.2vw,17px);color:var(--sub)}
+.btn{display:inline-block;margin-top:32px;background:var(--gold);color:#000;text-decoration:none;padding:14px 40px;border-radius:999px;font-weight:900;font-size:17px;letter-spacing:.08em}
+.btn:hover{filter:brightness(1.08)}
+section{max-width:1120px;margin:0 auto;padding:64px 16px}
+.omoi{max-width:720px;text-align:center}
+.omoi h2{font-weight:900;font-size:clamp(24px,4.6vw,40px);line-height:1.5;margin-bottom:36px}
+.nb{display:inline-block}
+.omoi p{font-size:clamp(15px,2.4vw,18px);margin-bottom:1.4em}
+.omoi p.last{font-weight:900;font-size:clamp(17px,2.8vw,22px);color:var(--gold);margin-top:36px}
+h2.sec{font-weight:900;font-size:clamp(22px,3.6vw,30px);margin-bottom:6px}
 .lead{color:var(--sub);margin-bottom:24px;font-size:14px}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.clip .frame{aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.clip iframe{width:100%;height:100%;border:0;display:block}
+.clip h3{font-size:15px;font-weight:700;margin-top:10px;text-align:center}
 .filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .filter button{background:var(--card);border:1px solid var(--line);color:var(--sub);border-radius:999px;padding:6px 16px;cursor:pointer;font:inherit;font-size:14px}
-.filter button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.filter button.on{background:var(--gold);border-color:var(--gold);color:#000;font-weight:700}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
 .work{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:zoom-in;transition:transform .2s}
 .work:hover{transform:translateY(-4px)}
@@ -34,31 +41,47 @@ h2{font-size:28px;margin-bottom:8px}
 .work.logo .pic{background:#f4f4f6}
 .work.logo .pic img{object-fit:contain;padding:18px}
 .work .meta{padding:14px 16px}
-.work .meta em{font-style:normal;font-size:12px;color:var(--accent);font-weight:700}
-.work .meta h3{font-size:16px;margin-top:2px}
+.work .meta em{font-style:normal;font-size:12px;color:var(--gold);font-weight:700}
+.work .meta h3{font-size:16px;font-weight:700;margin-top:2px}
 .work .meta p{font-size:13px;color:var(--sub)}
-.video{background:var(--card);border:1px dashed var(--line);border-radius:14px;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:14px;text-align:center;padding:16px}
-.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
-.contact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px;text-align:center}
-.contact a.btn{display:inline-block;margin-top:16px;background:var(--accent);color:#fff;text-decoration:none;padding:10px 28px;border-radius:999px;font-weight:700}
+.contact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:40px 24px;text-align:center}
+.contact h2{font-weight:900;font-size:clamp(22px,3.6vw,30px)}
 footer{text-align:center;color:var(--sub);font-size:12px;padding:40px 16px}
-#lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:16px}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:16px}
 #lb img{max-width:100%;max-height:100%}
-@media (max-width:600px){.nav nav a{margin-left:12px}.grid{grid-template-columns:1fr}.hero{padding:64px 16px 40px}}
+@media (max-width:700px){.vgrid{grid-template-columns:1fr;max-width:340px;margin:0 auto}.grid{grid-template-columns:1fr}.hero{min-height:auto;padding:64px 16px 40px}}
 </style>
 </head>
 <body>
-<header><div class="nav"><b>MASAKI SATO</b><nav><a href="#works">Works</a><a href="#clips">切り抜き</a><a href="#contact">Contact</a></nav></div></header>
 
 <div class="hero">
-  <small>STREAMER CREATIVE</small>
-  <h1>配信者の「らしさ」を、<br>サムネ・ロゴ・切り抜きに。</h1>
-  <p>（仮）VTuber・配信者さま向けに、ロゴ制作・サムネイル・ヘッダー・切り抜き動画の編集をしています。ここの文言はあとで差し替え。</p>
-  <div class="tags"><span>ロゴ</span><span>サムネイル</span><span>ヘッダー</span><span>切り抜き動画</span><span>テロップ</span></div>
+  <img src="img/hero_free.png" alt="2026年12月31日まで 全依頼無料" width="870" height="219">
+  <p class="sub">切り抜き・サムネイル・ロゴ・ヘッダー</p>
+  <p class="note">どれでも、1本から。</p>
+  <a class="btn" href="#contact">無料で頼んでみる</a>
 </div>
 
+<section class="omoi">
+  <h2>伸びないのは、<br>つまらないからじゃない。</h2>
+  <p>登録者がなかなか増えない。<br>同接はいつも同じ顔ぶれ。<br>配信をつけるのが、だんだん億劫になってきた。</p>
+  <p>もしそう感じているなら、<br><span class="nb">それはあなたの配信が</span><span class="nb">つまらないからではありません。</span><br>面白い瞬間が、アーカイブの中に埋もれたまま<br>まだ誰にも届いていないだけです。</p>
+  <p>その瞬間を見つけて、切り抜いて、<br>テロップを付けて、外へ出します。</p>
+  <p>「自分の配信、こんなに面白かったんだ」<br>そう思えたら、次の配信がきっと少し楽しくなる。</p>
+  <p class="last">まずは1本、無料で試してみませんか。</p>
+</section>
+
+<section id="clips">
+  <h2 class="sec">切り抜き動画</h2>
+  <p class="lead">実際に担当した切り抜きショート</p>
+  <div class="vgrid">
+    <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/ONo8lRJivLs" title="かいねこさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><h3>かいねこさま</h3></div>
+    <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/y2xgmmf1srk" title="塾長さま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><h3>塾長さま</h3></div>
+    <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/_pti-YDqsaw" title="モかさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><h3>モかさま</h3></div>
+  </div>
+</section>
+
 <section id="works">
-  <h2>Works</h2>
+  <h2 class="sec">サムネイル・ロゴ・ヘッダー</h2>
   <p class="lead">クリックで拡大</p>
   <div class="filter">
     <button class="on" data-f="all">すべて</button>
@@ -76,26 +99,15 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:40px 16px}
   </div>
 </section>
 
-<section id="clips">
-  <h2>切り抜き動画</h2>
-  <p class="lead">YouTube Shorts／TikTok の埋め込みをここに並べる予定</p>
-  <div class="vgrid">
-    <div class="video">切り抜き 1<br>（YouTubeのURLを入れると埋め込み）</div>
-    <div class="video">切り抜き 2</div>
-    <div class="video">切り抜き 3</div>
-    <div class="video">切り抜き 4</div>
-  </div>
-</section>
-
 <section id="contact">
   <div class="contact">
     <h2>ご依頼・ご相談</h2>
-    <p class="lead">（仮）料金・納期・連絡先はあとで入れる</p>
+    <p class="lead">2026年12月31日まで、すべてのご依頼を無料でお受けします。<br>（仮）連絡先はあとで入れる</p>
     <a class="btn" href="#">X でDMする（仮）</a>
   </div>
 </section>
 
-<footer>© Masaki Sato｜掲載作品の権利は各配信者さまに帰属します</footer>
+<footer>掲載作品の権利は各配信者さまに帰属します</footer>
 <div id="lb"><img alt=""></div>
 
 <script>
