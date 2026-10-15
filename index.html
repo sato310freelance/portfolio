@@ -56,7 +56,8 @@ section{max-width:1040px;margin:0 auto;padding:90px 20px}
 .card{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:30px;box-shadow:0 8px 0 var(--ink)}
 
 .clients{display:flex;flex-wrap:wrap;justify-content:center;gap:40px}
-.client{text-align:center;width:150px}
+.client{text-align:center;width:150px;text-decoration:none;color:inherit;transition:transform .2s}
+.client:hover{transform:translateY(-4px)}
 .client img{width:130px;height:130px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 10px;border:3px solid var(--ink)}
 .client b{font-weight:900;font-size:clamp(17px,1.8vw,20px)}
 
@@ -68,7 +69,7 @@ section{max-width:1040px;margin:0 auto;padding:90px 20px}
 .clip .frame{aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#000;border:3px solid var(--ink)}
 .clip iframe{width:100%;height:100%;border:0;display:block}
 .clip b{display:block;text-align:center;font-weight:900;font-size:18px;margin-top:8px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:760px;margin:0 auto}
 .work{cursor:zoom-in}
 .work .pic{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:3px solid var(--ink)}
 .work .pic img{width:100%;height:100%;object-fit:cover;display:block}
@@ -81,6 +82,9 @@ section{max-width:1040px;margin:0 auto;padding:90px 20px}
 .info .card{text-align:center}
 .info h3{font-weight:900;font-size:clamp(26px,3.4vw,38px)}
 .info p{font-weight:900;font-size:clamp(18px,2.2vw,24px)}
+.info p.free{font-size:clamp(56px,8vw,96px);line-height:1.15;color:var(--coral)}
+.info p.note{font-size:clamp(15px,1.8vw,19px);color:var(--sub)}
+.info .card{display:flex;flex-direction:column;justify-content:center}
 footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 16px 40px}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:16px}
 #lb img{max-width:100%;max-height:100%}
@@ -125,9 +129,9 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 16px 40px}
   <div class="ttl"><small>CLIENTS</small><b>切り抜きを担当した配信者さん</b></div>
   <div class="card">
     <div class="clients">
-      <div class="client"><img src="img/avatar_kaineko.jpg" alt=""><b>かいねこさま</b></div>
-      <div class="client"><img src="img/avatar_jukucho.jpg" alt=""><b>塾長さま</b></div>
-      <div class="client"><img src="img/avatar_moka.jpg" alt=""><b>モかさま</b></div>
+      <a class="client" href="https://www.youtube.com/@kai-neko-for" target="_blank" rel="noopener"><img src="img/avatar_kaineko.jpg" alt=""><b>かいねこ様</b></a>
+      <a class="client" href="https://www.youtube.com/@%E5%A1%BE%E9%95%B7--jukutyou" target="_blank" rel="noopener"><img src="img/avatar_jukucho.jpg" alt=""><b>塾長様</b></a>
+      <a class="client" href="https://www.youtube.com/@%E3%83%A2%E3%81%8B-r6f" target="_blank" rel="noopener"><img src="img/avatar_moka.jpg" alt=""><b>モか様</b></a>
     </div>
   </div>
 </section>
@@ -138,19 +142,17 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 16px 40px}
   <div class="card">
     <div class="pane on" id="clips">
       <div class="vgrid">
-        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/ONo8lRJivLs" title="かいねこさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>かいねこさま</b></div>
-        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/y2xgmmf1srk" title="塾長さま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>塾長さま</b></div>
-        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/_pti-YDqsaw" title="モかさま 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>モかさま</b></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/ONo8lRJivLs" title="かいねこ様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>かいねこ様</b></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/y2xgmmf1srk" title="塾長様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>塾長様</b></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/_pti-YDqsaw" title="モか様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>モか様</b></div>
       </div>
     </div>
     <div class="pane" id="design">
       <div class="grid">
-        <div class="work"><div class="pic"><img src="img/thumb_kagitsuki.jpg" alt=""></div><em>サムネイル</em><b>鉤月空さま｜隔離病院</b></div>
-        <div class="work"><div class="pic"><img src="img/thumb_tsukimi.jpg" alt=""></div><em>サムネイル</em><b>レキさま｜雑談配信（お月見）</b></div>
-        <div class="work"><div class="pic"><img src="img/thumb_halloween.jpg" alt=""></div><em>サムネイル</em><b>レキさま｜雑談配信（ハロウィン）</b></div>
-        <div class="work logo"><div class="pic"><img src="img/logo_sushizawa.png" alt=""></div><em>ロゴ</em><b>すしざわさま</b></div>
-        <div class="work logo"><div class="pic"><img src="img/logo_seishou.png" alt=""></div><em>ロゴ</em><b>青星ダイヤさま</b></div>
-        <div class="work"><div class="pic"><img src="img/header_hanaemi.jpg" alt=""></div><em>ヘッダー</em><b>はなえみさま｜Xヘッダー</b></div>
+        <div class="work"><div class="pic"><img src="img/thumb_kagitsuki.jpg" alt=""></div><em>サムネイル</em><b>鉤月空様｜隔離病院</b></div>
+        <div class="work"><div class="pic"><img src="img/thumb_tsukimi.jpg" alt=""></div><em>サムネイル</em><b>レキ様｜雑談配信（お月見）</b></div>
+        <div class="work logo"><div class="pic"><img src="img/logo_sushizawa.png" alt=""></div><em>ロゴ</em><b>すしざわ様</b></div>
+        <div class="work logo"><div class="pic"><img src="img/logo_seishou.png" alt=""></div><em>ロゴ</em><b>青星ダイヤ様</b></div>
       </div>
     </div>
   </div>
@@ -158,12 +160,11 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 16px 40px}
 
 <section class="fade">
   <div class="info">
-    <div class="card" id="price"><h3>料金</h3><p>2026年12月31日まで無料</p></div>
+    <div class="card" id="price"><h3>料金</h3><p class="free">無料</p><p class="note">※2026年12月31日まで</p></div>
     <div class="card" id="request"><h3>ご依頼</h3><p>XのDMまで（仮）</p></div>
   </div>
 </section>
 
-<footer>掲載作品の権利は各配信者さまに帰属します</footer>
 <div id="lb"><img alt=""></div>
 
 <script>
