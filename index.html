@@ -81,6 +81,9 @@ section{max-width:1040px;margin:0 auto;padding:90px 20px}
 .info{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .info .card{text-align:center}
 .info h3{font-weight:900;font-size:clamp(26px,3.4vw,38px)}
+.xbtn{display:inline-flex;align-items:center;gap:10px;align-self:center;margin-top:14px;background:#111;color:#fff;text-decoration:none;font-weight:900;font-size:clamp(18px,2.2vw,24px);padding:10px 28px;border-radius:999px;border:3px solid var(--ink);box-shadow:0 5px 0 var(--coral);transition:transform .15s}
+.xbtn:hover{transform:translateY(-2px)}
+.xbtn img{width:22px;height:22px}
 .info p{font-weight:900;font-size:clamp(18px,2.2vw,24px)}
 .info p.free{font-size:clamp(56px,8vw,96px);line-height:1.15;color:var(--coral)}
 .info p.note{font-size:clamp(15px,1.8vw,19px);color:var(--sub)}
@@ -161,7 +164,7 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 16px 40px}
 <section class="fade">
   <div class="info">
     <div class="card" id="price"><h3>料金</h3><p class="free">無料</p><p class="note">※2026年12月31日まで</p></div>
-    <div class="card" id="request"><h3>ご依頼</h3><p>XのDMまで（仮）</p></div>
+    <div class="card" id="request"><h3>ご依頼</h3><p>XのDMまで</p><a class="xbtn" href="https://x.com/tenk_tk" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/x/ffffff" alt="">@tenk_tk</a></div>
   </div>
 </section>
 
