@@ -64,6 +64,11 @@ section{max-width:1040px;margin:0 auto;padding:90px 20px}
 .tabs{display:flex;justify-content:center;gap:12px;margin-bottom:22px}
 .tabs button{font:inherit;font-weight:900;font-size:clamp(18px,2vw,24px);padding:8px 28px;border-radius:999px;border:3px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer}
 .tabs button.on{background:var(--mint);color:#fff}
+.vt{font-weight:900;font-size:15px;line-height:1.5;margin-top:4px;text-align:center}
+.desc{font-weight:500;font-size:14px;line-height:1.7;color:var(--sub);margin-top:4px}
+.clip .desc{text-align:center}
+.ttl .lead{font-weight:700;font-size:clamp(15px,1.8vw,19px);color:var(--sub);margin-top:6px}
+.vt:empty,.desc:empty,.lead:empty{display:none}
 .pane{display:none}.pane.on{display:block}
 .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .clip .frame{aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#000;border:3px solid var(--ink)}
@@ -129,7 +134,7 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 16px 40px}
 </div>
 
 <section class="fade">
-  <div class="ttl"><small>CLIENTS</small><b>切り抜きを担当した配信者さん</b></div>
+  <div class="ttl"><small>CLIENTS</small><b>切り抜きを担当した配信者さん</b><p class="lead" data-ph="小見出し"></p></div>
   <div class="card">
     <div class="clients">
       <a class="client" href="https://www.youtube.com/@kai-neko-for" target="_blank" rel="noopener"><img src="img/avatar_kaineko.jpg" alt=""><b>かいねこ様</b></a>
@@ -140,22 +145,22 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 16px 40px}
 </section>
 
 <section class="fade" id="works">
-  <div class="ttl"><small>WORKS</small><b>実績</b></div>
+  <div class="ttl"><small>WORKS</small><b>実績</b><p class="lead" data-ph="小見出し"></p></div>
   <div class="tabs"><button class="on" data-p="clips">切り抜き</button><button data-p="design">サムネ・ロゴ</button></div>
   <div class="card">
     <div class="pane on" id="clips">
       <div class="vgrid">
-        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/ONo8lRJivLs" title="かいねこ様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>かいねこ様</b></div>
-        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/y2xgmmf1srk" title="塾長様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>塾長様</b></div>
-        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/_pti-YDqsaw" title="モか様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>モか様</b></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/ONo8lRJivLs" title="かいねこ様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>かいねこ様</b><p class="vt" data-ph="動画のタイトル"></p><p class="desc" data-ph="こう作りました などの説明"></p></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/y2xgmmf1srk" title="塾長様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>塾長様</b><p class="vt" data-ph="動画のタイトル"></p><p class="desc" data-ph="こう作りました などの説明"></p></div>
+        <div class="clip"><div class="frame"><iframe src="https://www.youtube.com/embed/_pti-YDqsaw" title="モか様 切り抜き" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><b>モか様</b><p class="vt" data-ph="動画のタイトル"></p><p class="desc" data-ph="こう作りました などの説明"></p></div>
       </div>
     </div>
     <div class="pane" id="design">
       <div class="grid">
-        <div class="work"><div class="pic"><img src="img/thumb_kagitsuki.jpg" alt=""></div><em>サムネイル</em><b>鉤月空様｜隔離病院</b></div>
-        <div class="work"><div class="pic"><img src="img/thumb_tsukimi.jpg" alt=""></div><em>サムネイル</em><b>レキ様｜雑談配信（お月見）</b></div>
-        <div class="work logo"><div class="pic"><img src="img/logo_sushizawa.png" alt=""></div><em>ロゴ</em><b>すしざわ様</b></div>
-        <div class="work logo"><div class="pic"><img src="img/logo_seishou.png" alt=""></div><em>ロゴ</em><b>青星ダイヤ様</b></div>
+        <div class="work"><div class="pic"><img src="img/thumb_kagitsuki.jpg" alt=""></div><em>サムネイル</em><b>鉤月空様｜隔離病院</b><p class="desc" data-ph="説明"></p></div>
+        <div class="work"><div class="pic"><img src="img/thumb_tsukimi.jpg" alt=""></div><em>サムネイル</em><b>レキ様｜雑談配信（お月見）</b><p class="desc" data-ph="説明"></p></div>
+        <div class="work logo"><div class="pic"><img src="img/logo_sushizawa.png" alt=""></div><em>ロゴ</em><b>すしざわ様</b><p class="desc" data-ph="説明"></p></div>
+        <div class="work logo"><div class="pic"><img src="img/logo_seishou.png" alt=""></div><em>ロゴ</em><b>青星ダイヤ様</b><p class="desc" data-ph="説明"></p></div>
       </div>
     </div>
   </div>
